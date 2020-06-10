@@ -32,7 +32,7 @@ class DDPGAgent(Agent):
             raise ValueError('Critic "{}" has more than one output. DDPG expects a critic that has a single output.'.format(critic))
         if critic_action_input not in critic.input:
             raise ValueError('Critic "{}" does not have designated action input "{}".'.format(critic, critic_action_input))
-        if not hasattr(critic.input, '__shape__') or len(critic.input.shape) < 3:
+        if not hasattr(critic.input, '__shape__') or len(critic.input.shape) < 2:
             raise ValueError('Critic "{}" does not have enough inputs. The critic must have at exactly two inputs, one for the action and one for the observation.'.format(critic))
 
         super(DDPGAgent, self).__init__(**kwargs)
